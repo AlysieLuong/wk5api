@@ -106,6 +106,10 @@ export async function DELETE(request: Request) {
   
       // Keep the length of the array for comparison
       const initialLength = users.length;
+
+      if (userId === -1) {
+        users = [];
+      }
   
       // Remove the user by ID
       users = users.filter((user) => user.id !== userId);
@@ -120,4 +124,6 @@ export async function DELETE(request: Request) {
       return new NextResponse('Invalid request body', { status: 400 });
     }
   }
+
+
   
